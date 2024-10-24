@@ -25,17 +25,17 @@ public class NoteInfo
 
 public class NotesManager : MonoBehaviour
 {
-    public int noteNumber;
+    private int noteNumber;
     private string songName;
+
+    [SerializeField] private float noteSpeed;
+    [SerializeField] private GameObject noteObj;
+    [SerializeField] private SongDatabase database;
 
     public List<int> LaneNum = new List<int>();
     public List<int> NoteType = new List<int>();
     public List<float> NotesTime = new List<float>();
     public List<GameObject> NotesObj = new List<GameObject>();
-
-    [SerializeField] private float noteSpeed;
-    [SerializeField] private GameObject noteObj;
-    [SerializeField] private SongDatabase database;
 
     private void OnEnable()
     {
