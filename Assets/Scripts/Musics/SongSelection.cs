@@ -10,10 +10,10 @@ using UnityEngine.UI;
 
 public class SongSelection : MonoBehaviour
 {
-    [SerializeField] SongDatabase database;
-    [SerializeField] TextMeshProUGUI[] songNameText;
-    [SerializeField] TextMeshProUGUI[] songLevelText;
-    [SerializeField] Image songImage;
+    [SerializeField] private SongDatabase database;
+    [SerializeField] private TextMeshProUGUI[] songNameText;
+    [SerializeField] private TextMeshProUGUI[] songLevelText;
+    [SerializeField] private Image songImage;
 
     private AudioSource source;
     private AudioClip music;
@@ -31,6 +31,11 @@ public class SongSelection : MonoBehaviour
     }
 
     private void Update()
+    {
+        SongManager();
+    }
+
+    private void SongManager()
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {

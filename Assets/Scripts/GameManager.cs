@@ -6,20 +6,23 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-    #region PART5
+    [Header("Score Multiplier")]
     public float maxScore;
     public float ratioScore;
-    #endregion
 
+    [Header("Current Song Info")]
     public int songID;
     public float noteSpeed;
 
-    public bool Start;
-    public float StartTime;
+    [Header("Current Song Checkpoint")]
+    public bool start;
+    public float startTime;
 
+    [Header("Current Player's Combo & Score")]
     public int combo;
     public int score;
 
+    [Header("Current Player's Combo Info")]
     public int perfect;
     public int great;
     public int good;

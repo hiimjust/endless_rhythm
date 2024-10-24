@@ -28,19 +28,24 @@ public class NoteJudgement : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.Start && !(notesManager.NotesTime.Count == 0))
+        if (notesManager.NotesTime.Count == 0)
+        {
+            return;
+        }
+
+        if (GameManager.instance.start)
         {
             if (Input.GetKeyDown(KeyCode.D))
             {
                 if (notesManager.LaneNum[0] == 0)
                 {
-                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.StartTime)), 0);
+                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
                 }
                 else
                 {
                     if (notesManager.LaneNum[1] == 0)
                     {
-                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.StartTime)), 1);
+                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
                     }
                 }
             }
@@ -48,13 +53,13 @@ public class NoteJudgement : MonoBehaviour
             {
                 if (notesManager.LaneNum[0] == 1)
                 {
-                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.StartTime)), 0);
+                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
                 }
                 else
                 {
                     if (notesManager.LaneNum[1] == 1)
                     {
-                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.StartTime)), 1);
+                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
                     }
                 }
             }
@@ -62,13 +67,13 @@ public class NoteJudgement : MonoBehaviour
             {
                 if (notesManager.LaneNum[0] == 2)
                 {
-                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.StartTime)), 0);
+                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
                 }
                 else
                 {
                     if (notesManager.LaneNum[1] == 2)
                     {
-                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.StartTime)), 1);
+                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
                     }
                 }
             }
@@ -76,31 +81,35 @@ public class NoteJudgement : MonoBehaviour
             {
                 if (notesManager.LaneNum[0] == 3)
                 {
-                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.StartTime)), 0);
+                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
                 }
                 else
                 {
                     if (notesManager.LaneNum[1] == 3)
                     {
-                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.StartTime)), 1);
+                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
                     }
                 }
             }
 
-            if (Time.time > endTime + GameManager.instance.StartTime)
+            if (Time.time > endTime + GameManager.instance.startTime)
             {
                 finish.SetActive(true);
                 Invoke("ResultScene", 3f);
                 return;
             }
 
-            if (Time.time > notesManager.NotesTime[0] + GameManager.instance.StartTime + 0.2f)
+
+            if (notesManager.NotesTime.Count != 0)
             {
-                message(3);
-                deleteData(0);
-                GameManager.instance.miss++;
-                GameManager.instance.combo = 0;
-                Debug.Log("Miss");
+                if (Time.time > notesManager.NotesTime[0] + GameManager.instance.startTime + 0.2f)
+                {
+                    Debug.Log("Miss");
+                    message(3);
+                    GameManager.instance.miss++;
+                    GameManager.instance.combo = 0;
+                    deleteData(0);
+                }
             }
         }
     }
@@ -168,7 +177,8 @@ public class NoteJudgement : MonoBehaviour
         Instantiate(MessageObj[judge], new Vector3(notesManager.LaneNum[0] - 1.5f, -0.5f, -15f), Quaternion.Euler(45, 0, 0));
     }
 
-    void ResultScene() {
+    void ResultScene()
+    {
         SceneManager.LoadScene("ResultScene");
     }
 }
