@@ -7,12 +7,12 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     [Header("Score Multiplier")]
-    public float maxScore;
+    public float maxScore = Constants.MAX_SCORE;
     public float ratioScore;
 
     [Header("Current Song Info")]
     public int songID;
-    public float noteSpeed;
+    public float noteSpeed = Constants.NOTE_SPEED;
 
     [Header("Current Song Checkpoint")]
     public bool start;
@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     [Header("Current Player's Combo Info")]
     public int perfect;
     public int great;
-    public int good;
     public int bad;
     public int miss;
 

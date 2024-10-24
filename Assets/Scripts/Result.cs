@@ -27,10 +27,10 @@ public class Result : MonoBehaviour
         GameManager.instance.great = 0;
         GameManager.instance.bad = 0;
         GameManager.instance.miss = 0;
-        GameManager.instance.maxScore = 0;
+        // GameManager.instance.maxScore = 0;
         GameManager.instance.ratioScore = 0;
         GameManager.instance.score = 0;
         GameManager.instance.combo = 0;
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(Constants.GAME_SCENE);
     }
 }

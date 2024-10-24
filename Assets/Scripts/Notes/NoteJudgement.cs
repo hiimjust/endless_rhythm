@@ -7,15 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class NoteJudgement : MonoBehaviour
 {
-    [SerializeField] private GameObject[] MessageObj;
+    [Header("Notes")]
     [SerializeField] private NotesManager notesManager;
 
+    [Header("UI")]
+    [SerializeField] private GameObject[] notificationObj;
     [SerializeField] private TextMeshProUGUI comboText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject finish;
 
+    [Header("Audio Source")]
     private AudioSource hitSource;
-    [SerializeField] AudioClip hitSound;
+    [SerializeField] private AudioClip hitSound;
 
     private float endTime = 0;
 
@@ -39,13 +42,13 @@ public class NoteJudgement : MonoBehaviour
             {
                 if (notesManager.LaneNum[0] == 0)
                 {
-                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
+                    Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
                 }
                 else
                 {
                     if (notesManager.LaneNum[1] == 0)
                     {
-                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
+                        Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
                     }
                 }
             }
@@ -53,13 +56,13 @@ public class NoteJudgement : MonoBehaviour
             {
                 if (notesManager.LaneNum[0] == 1)
                 {
-                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
+                    Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
                 }
                 else
                 {
                     if (notesManager.LaneNum[1] == 1)
                     {
-                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
+                        Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
                     }
                 }
             }
@@ -67,13 +70,13 @@ public class NoteJudgement : MonoBehaviour
             {
                 if (notesManager.LaneNum[0] == 2)
                 {
-                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
+                    Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
                 }
                 else
                 {
                     if (notesManager.LaneNum[1] == 2)
                     {
-                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
+                        Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
                     }
                 }
             }
@@ -81,13 +84,13 @@ public class NoteJudgement : MonoBehaviour
             {
                 if (notesManager.LaneNum[0] == 3)
                 {
-                    Judgement(GetABS(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
+                    Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
                 }
                 else
                 {
                     if (notesManager.LaneNum[1] == 3)
                     {
-                        Judgement(GetABS(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
+                        Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
                     }
                 }
             }
@@ -95,7 +98,7 @@ public class NoteJudgement : MonoBehaviour
             if (Time.time > endTime + GameManager.instance.startTime)
             {
                 finish.SetActive(true);
-                Invoke("ResultScene", 3f);
+                Invoke(Constants.RESULT_SCENE, 3f);
                 return;
             }
 
@@ -105,64 +108,57 @@ public class NoteJudgement : MonoBehaviour
                 if (Time.time > notesManager.NotesTime[0] + GameManager.instance.startTime + 0.2f)
                 {
                     Debug.Log("Miss");
-                    message(3);
+                    NoteJudgementNotification(3);
                     GameManager.instance.miss++;
                     GameManager.instance.combo = 0;
-                    deleteData(0);
+                    DeleteData(0);
                 }
             }
         }
     }
+
+
+
     void Judgement(float timeLag, int numOffset)
     {
         hitSource.PlayOneShot(hitSound);
         if (timeLag <= 0.05f)
         {
             Debug.Log("Perfect");
-            message(0);
+            NoteJudgementNotification(0);
             GameManager.instance.ratioScore += 5;
             GameManager.instance.perfect++;
             GameManager.instance.combo++;
-            deleteData(numOffset);
+            DeleteData(numOffset);
         }
         else
         {
             if (timeLag <= 0.08f)
             {
                 Debug.Log("Great");
-                message(1);
+                NoteJudgementNotification(1);
                 GameManager.instance.ratioScore += 3;
                 GameManager.instance.great++;
                 GameManager.instance.combo++;
-                deleteData(numOffset);
+                DeleteData(numOffset);
             }
             else
             {
                 if (timeLag <= 0.1f)
                 {
                     Debug.Log("Bad");
-                    message(2);
+                    NoteJudgementNotification(2);
                     GameManager.instance.ratioScore += 1;
                     GameManager.instance.bad++;
                     GameManager.instance.combo++;
-                    deleteData(numOffset);
+                    DeleteData(numOffset);
                 }
             }
         }
     }
-    float GetABS(float num)
-    {
-        if (num >= 0)
-        {
-            return num;
-        }
-        else
-        {
-            return -num;
-        }
-    }
 
-    void deleteData(int numOffset)
+
+    void DeleteData(int numOffset)
     {
         notesManager.NotesTime.RemoveAt(numOffset);
         notesManager.LaneNum.RemoveAt(numOffset);
@@ -172,13 +168,13 @@ public class NoteJudgement : MonoBehaviour
         scoreText.text = GameManager.instance.score.ToString();
     }
 
-    void message(int judge)
+    void NoteJudgementNotification(int judge)
     {
-        Instantiate(MessageObj[judge], new Vector3(notesManager.LaneNum[0] - 1.5f, -0.5f, -15f), Quaternion.Euler(45, 0, 0));
+        Instantiate(notificationObj[judge], new Vector3(notesManager.LaneNum[0] - 1.5f, -0.5f, -15f), Quaternion.Euler(45, 0, 0));
     }
 
     void ResultScene()
     {
-        SceneManager.LoadScene("ResultScene");
+        SceneManager.LoadScene(Constants.RESULT_SCENE);
     }
 }
