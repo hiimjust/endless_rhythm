@@ -18,7 +18,7 @@ public class Constants : MonoBehaviour
     #endregion
 
     #region STRINGS
-    public static string MUSIC_SELECT = "MusicSelect";
+    public static string MUSIC_SELECT_SCENE = "MusicSelectScene";
     public static string GAME_SCENE = "GameScene";
     public static string RESULT_SCENE = "ResultScene";
     #endregion

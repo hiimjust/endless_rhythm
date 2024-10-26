@@ -152,14 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d83af0bdbddf194bb045b6ede924437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteNum: 0
+  noteSpeed: 0
+  noteObj: {fileID: 8138395605340686618, guid: 5644e60ecc6b37e49b8ce63deafcf120, type: 3}
+  database: {fileID: 11400000, guid: 599f0c3752a4ced429304b187084e3be, type: 2}
   LaneNum: 
   NoteType: 
   NotesTime: []
   NotesObj: []
-  NotesSpeed: 8
-  noteObj: {fileID: 8138395605340686618, guid: 5644e60ecc6b37e49b8ce63deafcf120, type: 3}
-  database: {fileID: 11400000, guid: 599f0c3752a4ced429304b187084e3be, type: 2}
 --- !u!4 &181087384
 Transform:
   m_ObjectHideFlags: 0
@@ -1949,12 +1948,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25d3f6e8b7598e4e94b59207a1abf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MessageObj:
+  notesManager: {fileID: 181087383}
+  notificationObj:
   - {fileID: 8350097204057562724, guid: 9359a220fd4af3e4baa247f2ae7e5693, type: 3}
   - {fileID: 6153275830562760842, guid: 859e0df61b80519429fdc2029bf55e24, type: 3}
   - {fileID: 7243312428212838732, guid: c8cd936741974874182c70da0c8b3ebc, type: 3}
   - {fileID: 14054815396223616, guid: 2e5318c132087ed488ff4863a49fe01b, type: 3}
-  notesManager: {fileID: 181087383}
   comboText: {fileID: 1753739841}
   scoreText: {fileID: 253110098}
   finish: {fileID: 1245125195}

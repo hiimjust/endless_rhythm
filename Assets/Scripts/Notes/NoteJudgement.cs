@@ -98,7 +98,7 @@ public class NoteJudgement : MonoBehaviour
             if (Time.time > endTime + GameManager.instance.startTime)
             {
                 finish.SetActive(true);
-                Invoke(Constants.RESULT_SCENE, 3f);
+                Invoke(Constants.RESULT_SCENE, 5f);
                 return;
             }
 
