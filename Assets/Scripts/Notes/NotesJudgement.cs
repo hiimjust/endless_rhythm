@@ -38,31 +38,21 @@ public class NotesJudgement : MonoBehaviour
 
         if (GameManager.instance.start)
         {
-            InputHandle();
+            HandleInput();
 
             if (Time.time > endTime + GameManager.instance.startTime)
             {
-                finish.SetActive(true);
-                Invoke(Constants.RESULT_SCENE, 5f);
-                return;
+                FinishGame();
             }
-
 
             if (notesManager.NotesTime.Count != 0)
             {
-                if (Time.time > notesManager.NotesTime[0] + GameManager.instance.startTime + (GameManager.instance.TimePerBeat / 2))
-                {
-                    Debug.Log("Miss");
-                    NoteJudgementNotification(3);
-                    GameManager.instance.miss++;
-                    GameManager.instance.combo = 0;
-                    DeleteData(0);
-                }
+                NoteMiss();
             }
         }
     }
 
-    private void InputHandle()
+    private void HandleInput()
     {
         KeyCode[] keys = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
 
@@ -84,7 +74,13 @@ public class NotesJudgement : MonoBehaviour
 
     private void NoteMiss()
     {
-
+        if (Time.time > notesManager.NotesTime[0] + GameManager.instance.startTime + (GameManager.instance.TimePerBeat / 2))
+        {
+            NoteJudgementNotification(3);
+            GameManager.instance.miss++;
+            GameManager.instance.combo = 0;
+            DeleteData(0);
+        }
     }
 
     void Judgement(float timeLag, int numOffset)
@@ -92,7 +88,6 @@ public class NotesJudgement : MonoBehaviour
         hitSource.PlayOneShot(hitSound);
         if (timeLag <= GameManager.instance.TimePerBeat / 8)
         {
-            Debug.Log("Perfect");
             NoteJudgementNotification(0);
             GameManager.instance.ratioScore += 5;
             GameManager.instance.perfect++;
@@ -103,7 +98,6 @@ public class NotesJudgement : MonoBehaviour
         {
             if (timeLag <= GameManager.instance.TimePerBeat / 4)
             {
-                Debug.Log("Great");
                 NoteJudgementNotification(1);
                 GameManager.instance.ratioScore += 3;
                 GameManager.instance.great++;
@@ -114,7 +108,6 @@ public class NotesJudgement : MonoBehaviour
             {
                 if (timeLag <= GameManager.instance.TimePerBeat / 2)
                 {
-                    Debug.Log("Bad");
                     NoteJudgementNotification(2);
                     GameManager.instance.ratioScore += 1;
                     GameManager.instance.bad++;
@@ -126,7 +119,7 @@ public class NotesJudgement : MonoBehaviour
     }
 
 
-    void DeleteData(int numOffset)
+    private void DeleteData(int numOffset)
     {
         notesManager.NotesTime.RemoveAt(numOffset);
         notesManager.LaneNum.RemoveAt(numOffset);
@@ -136,12 +129,19 @@ public class NotesJudgement : MonoBehaviour
         scoreText.text = GameManager.instance.score.ToString();
     }
 
-    void NoteJudgementNotification(int judge)
+    private void NoteJudgementNotification(int judge)
     {
         Instantiate(notificationObj[judge], new Vector3(notesManager.LaneNum[0] - 1.5f, -0.5f, -15f), Quaternion.Euler(45, 0, 0));
     }
 
-    void ResultScene()
+    private void FinishGame()
+    {
+        finish.SetActive(true);
+        Invoke(Constants.RESULT_SCENE, 5f);
+        return;
+    }
+
+    private void ResultScene()
     {
         SceneManager.LoadScene(Constants.RESULT_SCENE);
     }
