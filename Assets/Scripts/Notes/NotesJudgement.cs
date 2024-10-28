@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NoteJudgement : MonoBehaviour
+public class NotesJudgement : MonoBehaviour
 {
     [Header("Notes")]
     [SerializeField] private NotesManager notesManager;
@@ -38,62 +38,7 @@ public class NoteJudgement : MonoBehaviour
 
         if (GameManager.instance.start)
         {
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                if (notesManager.LaneNum[0] == 0)
-                {
-                    Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
-                }
-                else
-                {
-                    if (notesManager.LaneNum[1] == 0)
-                    {
-                        Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
-                    }
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                if (notesManager.LaneNum[0] == 1)
-                {
-                    Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
-                }
-                else
-                {
-                    if (notesManager.LaneNum[1] == 1)
-                    {
-                        Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
-                    }
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                if (notesManager.LaneNum[0] == 2)
-                {
-                    Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
-                }
-                else
-                {
-                    if (notesManager.LaneNum[1] == 2)
-                    {
-                        Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
-                    }
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                if (notesManager.LaneNum[0] == 3)
-                {
-                    Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[0] + GameManager.instance.startTime)), 0);
-                }
-                else
-                {
-                    if (notesManager.LaneNum[1] == 3)
-                    {
-                        Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[1] + GameManager.instance.startTime)), 1);
-                    }
-                }
-            }
+            InputHandle();
 
             if (Time.time > endTime + GameManager.instance.startTime)
             {
@@ -105,7 +50,7 @@ public class NoteJudgement : MonoBehaviour
 
             if (notesManager.NotesTime.Count != 0)
             {
-                if (Time.time > notesManager.NotesTime[0] + GameManager.instance.startTime + 0.2f)
+                if (Time.time > notesManager.NotesTime[0] + GameManager.instance.startTime + (GameManager.instance.TimePerBeat / 2))
                 {
                     Debug.Log("Miss");
                     NoteJudgementNotification(3);
@@ -117,12 +62,35 @@ public class NoteJudgement : MonoBehaviour
         }
     }
 
+    private void InputHandle()
+    {
+        KeyCode[] keys = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
 
+        for (int i = 0; i < keys.Length; i++)
+        {
+            if (Input.GetKeyDown(keys[i]))
+            {
+                for (int j = 0; j < notesManager.LaneNum.Count; j++)
+                {
+                    if (notesManager.LaneNum[j] == i)
+                    {
+                        Judgement(Mathf.Abs(Time.time - (notesManager.NotesTime[j] + GameManager.instance.startTime)), j);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    private void NoteMiss()
+    {
+
+    }
 
     void Judgement(float timeLag, int numOffset)
     {
         hitSource.PlayOneShot(hitSound);
-        if (timeLag <= 0.05f)
+        if (timeLag <= GameManager.instance.TimePerBeat / 8)
         {
             Debug.Log("Perfect");
             NoteJudgementNotification(0);
@@ -133,7 +101,7 @@ public class NoteJudgement : MonoBehaviour
         }
         else
         {
-            if (timeLag <= 0.08f)
+            if (timeLag <= GameManager.instance.TimePerBeat / 4)
             {
                 Debug.Log("Great");
                 NoteJudgementNotification(1);
@@ -144,7 +112,7 @@ public class NoteJudgement : MonoBehaviour
             }
             else
             {
-                if (timeLag <= 0.1f)
+                if (timeLag <= GameManager.instance.TimePerBeat / 2)
                 {
                     Debug.Log("Bad");
                     NoteJudgementNotification(2);

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [Header("Current Song Checkpoint")]
     public bool start;
     public float startTime;
+    public float TimePerBeat;
 
     [Header("Current Player's Combo & Score")]
     public int combo;
