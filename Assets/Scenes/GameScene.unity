@@ -159,6 +159,7 @@ MonoBehaviour:
   NoteType: 
   NotesTime: []
   NotesObj: []
+  timePerBeat: 0
 --- !u!4 &181087384
 Transform:
   m_ObjectHideFlags: 0
@@ -1949,11 +1950,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notesManager: {fileID: 181087383}
-  notificationObj:
-  - {fileID: 8350097204057562724, guid: 9359a220fd4af3e4baa247f2ae7e5693, type: 3}
-  - {fileID: 6153275830562760842, guid: 859e0df61b80519429fdc2029bf55e24, type: 3}
-  - {fileID: 7243312428212838732, guid: c8cd936741974874182c70da0c8b3ebc, type: 3}
-  - {fileID: 14054815396223616, guid: 2e5318c132087ed488ff4863a49fe01b, type: 3}
+  notifications:
+  - {fileID: 6156210811985753711, guid: 8ff5f02bb16e39a47aa9f644440f04e6, type: 3}
+  - {fileID: 748815172961334204, guid: 8bffc0e78895e5f4b9d0b5e907f00484, type: 3}
+  - {fileID: 8867164646088687298, guid: f7c712d9c515b1b4fa181b1b0f90796b, type: 3}
+  - {fileID: 6113230289399077423, guid: 32d21ba9677d0b94a8dc66c5df2d055a, type: 3}
   comboText: {fileID: 1753739841}
   scoreText: {fileID: 253110098}
   finish: {fileID: 1245125195}

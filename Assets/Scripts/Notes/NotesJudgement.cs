@@ -11,7 +11,7 @@ public class NotesJudgement : MonoBehaviour
     [SerializeField] private NotesManager notesManager;
 
     [Header("UI")]
-    [SerializeField] private GameObject[] notificationObj;
+    [SerializeField] private GameObject[] notifications;
     [SerializeField] private TextMeshProUGUI comboText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject finish;
@@ -83,6 +83,11 @@ public class NotesJudgement : MonoBehaviour
         }
     }
 
+    private void NoteHit(int numOffset)
+    {
+
+    }
+
     void Judgement(float timeLag, int numOffset)
     {
         hitSource.PlayOneShot(hitSound);
@@ -94,27 +99,21 @@ public class NotesJudgement : MonoBehaviour
             GameManager.instance.combo++;
             DeleteData(numOffset);
         }
-        else
+        else if (timeLag <= GameManager.instance.TimePerBeat / 4)
         {
-            if (timeLag <= GameManager.instance.TimePerBeat / 4)
-            {
-                NoteJudgementNotification(1);
-                GameManager.instance.ratioScore += 3;
-                GameManager.instance.great++;
-                GameManager.instance.combo++;
-                DeleteData(numOffset);
-            }
-            else
-            {
-                if (timeLag <= GameManager.instance.TimePerBeat / 2)
-                {
-                    NoteJudgementNotification(2);
-                    GameManager.instance.ratioScore += 1;
-                    GameManager.instance.bad++;
-                    GameManager.instance.combo++;
-                    DeleteData(numOffset);
-                }
-            }
+            NoteJudgementNotification(1);
+            GameManager.instance.ratioScore += 3;
+            GameManager.instance.great++;
+            GameManager.instance.combo++;
+            DeleteData(numOffset);
+        }
+        else if (timeLag <= GameManager.instance.TimePerBeat / 2)
+        {
+            NoteJudgementNotification(2);
+            GameManager.instance.ratioScore += 1;
+            GameManager.instance.bad++;
+            GameManager.instance.combo++;
+            DeleteData(numOffset);
         }
     }
 
@@ -131,7 +130,7 @@ public class NotesJudgement : MonoBehaviour
 
     private void NoteJudgementNotification(int judge)
     {
-        Instantiate(notificationObj[judge], new Vector3(notesManager.LaneNum[0] - 1.5f, -0.5f, -15f), Quaternion.Euler(45, 0, 0));
+        Instantiate(notifications[judge], new Vector3(notesManager.LaneNum[0] - 1.5f, 1f, -12f), Quaternion.Euler(45, 0, 0));
     }
 
     private void FinishGame()
