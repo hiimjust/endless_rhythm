@@ -20,11 +20,6 @@ public class ElementRenderer : MonoBehaviour
         materialAlpha = rd.material.color.a;
     }
 
-    private void Start()
-    {
-        Debug.Log(materialAlpha);
-    }
-
     private void Update()
     {
         if (!(rd.material.color.a <= 0f))
