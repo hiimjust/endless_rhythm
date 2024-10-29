@@ -12,6 +12,8 @@ public class ElementRenderer : MonoBehaviour
     private float alpha = 0f;
     private float materialAlpha;
 
+    private KeyCode[] keys = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
+
     private void Awake()
     {
         rd = GetComponent<Renderer>();
@@ -30,33 +32,9 @@ public class ElementRenderer : MonoBehaviour
             rd.material.color = new Color(rd.material.color.r, rd.material.color.g, rd.material.color.b, alpha < 0f ? 0f : alpha);
         }
 
-        if (num == 1)
+        if (Input.GetKeyDown(keys[num - 1]))
         {
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                ColorChange();
-            }
-        }
-        if (num == 2)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                ColorChange();
-            }
-        }
-        if (num == 3)
-        {
-            if (Input.GetKeyDown(KeyCode.J))
-            {
-                ColorChange();
-            }
-        }
-        if (num == 4)
-        {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                ColorChange();
-            }
+            ColorChange();
         }
         alpha -= speed * Time.deltaTime;
     }
