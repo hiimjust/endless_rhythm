@@ -14,7 +14,7 @@ public class MusicManager : MonoBehaviour
         GameManager.instance.start = false;
         songName = database.songData[GameManager.instance.songID].songName;
         source = GetComponent<AudioSource>();
-        song = (AudioClip)Resources.Load("BGMs/" + songName);
+        song = (AudioClip)Resources.Load(Constants.MUSIC_PATH + songName);
         isPlayed = false;
     }
 

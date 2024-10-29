@@ -20,6 +20,7 @@ public class NotesJudgement : MonoBehaviour
     private AudioSource hitSource;
     [SerializeField] private AudioClip hitSound;
 
+    private KeyCode[] keys = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
     private float endTime = 0;
 
     private void Start()
@@ -53,8 +54,6 @@ public class NotesJudgement : MonoBehaviour
 
     private void HandleInput()
     {
-        KeyCode[] keys = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
-
         for (int i = 0; i < keys.Length; i++)
         {
             if (Input.GetKeyDown(keys[i]))
@@ -75,16 +74,11 @@ public class NotesJudgement : MonoBehaviour
     {
         if (Time.time > notesManager.NotesTime[0] + GameManager.instance.startTime + (GameManager.instance.TimePerBeat / 2))
         {
-            NoteJudgementNotification(3);
+            NoteJudgementNotification(Constants.NOTE_NOTIFICATION_MISS);
             GameManager.instance.miss++;
             GameManager.instance.combo = 0;
             ProcessNote(0);
         }
-    }
-
-    private void NoteHit(int numOffset)
-    {
-
     }
 
     void NoteJudgement(float timeLag, int numOffset)
@@ -92,7 +86,7 @@ public class NotesJudgement : MonoBehaviour
         hitSource.PlayOneShot(hitSound);
         if (timeLag <= GameManager.instance.TimePerBeat / 8)
         {
-            NoteJudgementNotification(0);
+            NoteJudgementNotification(Constants.NOTE_NOTIFICATION_PERFECT);
             GameManager.instance.ratioScore += 5;
             GameManager.instance.perfect++;
             GameManager.instance.combo++;
@@ -100,22 +94,21 @@ public class NotesJudgement : MonoBehaviour
         }
         else if (timeLag <= GameManager.instance.TimePerBeat / 4)
         {
-            NoteJudgementNotification(1);
+            NoteJudgementNotification(Constants.NOTE_NOTIFICATION_GOOD);
             GameManager.instance.ratioScore += 3;
-            GameManager.instance.great++;
+            GameManager.instance.good++;
             GameManager.instance.combo++;
             ProcessNote(numOffset);
         }
         else if (timeLag <= GameManager.instance.TimePerBeat / 2)
         {
-            NoteJudgementNotification(2);
+            NoteJudgementNotification(Constants.NOTE_NOTIFICATION_HIT);
             GameManager.instance.ratioScore += 1;
-            GameManager.instance.bad++;
+            GameManager.instance.hit++;
             GameManager.instance.combo++;
             ProcessNote(numOffset);
         }
     }
-
 
     private void ProcessNote(int numOffset)
     {

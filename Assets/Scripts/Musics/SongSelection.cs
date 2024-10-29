@@ -26,7 +26,7 @@ public class SongSelection : MonoBehaviour
         select = 0;
         source = GetComponent<AudioSource>();
         songName = database.songData[select].songName;
-        music = (AudioClip)Resources.Load("BGMs/" + songName);
+        music = (AudioClip)Resources.Load(Constants.MUSIC_PATH + songName);
         SongUpdateAll();
     }
 
@@ -62,13 +62,13 @@ public class SongSelection : MonoBehaviour
     private void SongStart()
     {
         GameManager.instance.songID = select;
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(Constants.GAME_SCENE);
     }
 
     private void SongUpdateAll()
     {
         songName = database.songData[select].songName;
-        music = (AudioClip)Resources.Load("BGMs/" + songName);
+        music = (AudioClip)Resources.Load(Constants.MUSIC_PATH + songName);
         source.Stop();
         source.PlayOneShot(music);
         for (int i = 0; i < 5; i++)

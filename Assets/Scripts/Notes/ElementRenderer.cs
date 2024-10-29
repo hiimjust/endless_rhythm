@@ -5,19 +5,17 @@ using UnityEngine;
 
 public class ElementRenderer : MonoBehaviour
 {
-    [SerializeField] private float speed = 3;
+    [SerializeField] private float speed = 3f;
     [SerializeField] private int num = 0;
 
     private Renderer rd;
     private float alpha = 0f;
-    private float materialAlpha;
 
     private KeyCode[] keys = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
 
     private void Awake()
     {
         rd = GetComponent<Renderer>();
-        materialAlpha = rd.material.color.a;
     }
 
     private void Update()

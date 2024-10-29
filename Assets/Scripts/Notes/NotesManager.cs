@@ -11,7 +11,6 @@ public class DataInfo
     public int BPM;
     public int offset;
     public NoteInfo[] notes;
-
 }
 
 [Serializable]

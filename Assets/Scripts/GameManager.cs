@@ -25,8 +25,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Current Player's Combo Info")]
     public int perfect;
-    public int great;
-    public int bad;
+    public int good;
+    public int hit;
     public int miss;
 
     private void Awake()
