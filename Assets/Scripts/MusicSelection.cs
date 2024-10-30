@@ -22,11 +22,6 @@ public class MusicSelection : MonoBehaviour
 
     private int select;
 
-    private void Awake()
-    {
-
-    }
-
     private void Start()
     {
         select = 0;
@@ -69,7 +64,7 @@ public class MusicSelection : MonoBehaviour
 
     private void CreateSongsList()
     {
-
+        content.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100 * database.songData.Length);
         for (int i = 0; i < database.songData.Length; i++)
         {
             SongDisplayInfo songInfo = Instantiate(songDisplayPrefab, content);
