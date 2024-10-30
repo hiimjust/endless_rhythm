@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class MusicSelection : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class MusicSelection : MonoBehaviour
     private AudioSource source;
     private AudioClip music;
     private string songName;
-
     private int select;
 
     private void Start()
@@ -34,23 +34,17 @@ public class MusicSelection : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) && select < database.songData.Length - 1)
         {
-            if (select < database.songData.Length)
-            {
-                SelectedSongBackroundColor(Color.gray);
-                select++;
-                UpdateSongsList();
-            }
+            SelectedSongBackroundColor(Color.gray);
+            select++;
+            UpdateSongsList();
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && select > 0)
         {
-            if (select > 0)
-            {
-                SelectedSongBackroundColor(Color.gray);
-                select--;
-                UpdateSongsList();
-            }
+            SelectedSongBackroundColor(Color.gray);
+            select--;
+            UpdateSongsList();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -67,14 +61,18 @@ public class MusicSelection : MonoBehaviour
         content.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100 * database.songData.Length);
         for (int i = 0; i < database.songData.Length; i++)
         {
-            SongDisplayInfo songInfo = Instantiate(songDisplayPrefab, content);
-            songInfo.SongName.text = database.songData[i].songName;
-            songInfo.SongLevel.text = database.songData[i].songLevel.ToString();
-            songInfo.Background.color = Color.gray;
-            songDisplayInfos.Add(songInfo);
+            CreateSong(database.songData[i].songName, database.songData[i].songLevel.ToString());
         }
     }
 
+    private void CreateSong(string songName, string songLevel)
+    {
+        SongDisplayInfo songInfo = Instantiate(songDisplayPrefab, content);
+        songInfo.SongName.text = songName;
+        songInfo.SongLevel.text = songLevel;
+        songInfo.Background.color = Color.gray;
+        songDisplayInfos.Add(songInfo);
+    }
 
     private void UpdateSongsList()
     {
