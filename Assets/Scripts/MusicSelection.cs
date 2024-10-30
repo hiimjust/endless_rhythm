@@ -24,7 +24,7 @@ public class MusicSelection : MonoBehaviour
 
     private void Awake()
     {
-        
+
     }
 
     private void Start()
@@ -43,6 +43,7 @@ public class MusicSelection : MonoBehaviour
         {
             if (select < database.songData.Length)
             {
+                SelectedSongBackroundColor(Color.gray);
                 select++;
                 UpdateSongsList();
             }
@@ -51,6 +52,7 @@ public class MusicSelection : MonoBehaviour
         {
             if (select > 0)
             {
+                SelectedSongBackroundColor(Color.gray);
                 select--;
                 UpdateSongsList();
             }
@@ -62,7 +64,7 @@ public class MusicSelection : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Back();
-        }   
+        }
     }
 
     private void CreateSongsList()
@@ -73,7 +75,7 @@ public class MusicSelection : MonoBehaviour
             SongDisplayInfo songInfo = Instantiate(songDisplayPrefab, content);
             songInfo.SongName.text = database.songData[i].songName;
             songInfo.SongLevel.text = database.songData[i].songLevel.ToString();
-            // songInfo.Background.sprite = database.songData[i].songImage;
+            songInfo.Background.color = Color.gray;
             songDisplayInfos.Add(songInfo);
         }
     }
@@ -91,7 +93,12 @@ public class MusicSelection : MonoBehaviour
     private void DisplaySelectedSong()
     {
         songImage.sprite = database.songData[select].songImage;
-        songDisplayInfos[select].Background.color = new Color(105, 185, 32, 200);
+        SelectedSongBackroundColor(Color.green);
+    }
+
+    private void SelectedSongBackroundColor(Color color)
+    {
+        songDisplayInfos[select].Background.color = color;
     }
 
     private void StartSong()
@@ -102,6 +109,6 @@ public class MusicSelection : MonoBehaviour
 
     private void Back()
     {
-        SceneManager.LoadScene(Constants.MENU_SCENE);
+        SceneManager.LoadScene(Constants.START_GAME_SCENE);
     }
 }
