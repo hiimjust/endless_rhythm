@@ -40,10 +40,10 @@ public class NotesManager : MonoBehaviour
 
     private void OnEnable()
     {
-        noteSpeed = GameManager.instance.noteSpeed;
+        noteSpeed = GameManager.Instance.noteSpeed;
         timePerBeat = 0;
         noteNumber = 0;
-        songName = database.songData[GameManager.instance.songID].songName;
+        songName = database.songData[GameManager.Instance.songID].songName;
         LoadSong(songName);
     }
 
@@ -62,7 +62,7 @@ public class NotesManager : MonoBehaviour
         {
             float line = 60 / (inputJSON.BPM * (float)inputJSON.notes[i].LPB);
             float beat = line * (float)inputJSON.notes[i].LPB;
-            GameManager.instance.TimePerBeat = beat;
+            GameManager.Instance.timePerBeat = beat;
             float time = (beat * inputJSON.notes[i].num / (float)inputJSON.notes[i].LPB) + inputJSON.offset * 0.01f;
             NotesTime.Add(time);
             LaneNum.Add(inputJSON.notes[i].block);

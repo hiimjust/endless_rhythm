@@ -61,7 +61,7 @@ public class SongSelection : MonoBehaviour
 
     private void SongStart()
     {
-        GameManager.instance.songID = select;
+        GameManager.Instance.songID = select;
         SceneManager.LoadScene(Constants.GAME_SCENE);
     }
 

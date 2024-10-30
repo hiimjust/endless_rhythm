@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;
+    private static GameManager instance = null;
+    public static GameManager Instance {
+        get {
+            return instance;
+        }
+    }
 
     [Header("Score Multiplier")]
     public float maxScore = Constants.MAX_SCORE;
@@ -17,7 +22,7 @@ public class GameManager : MonoBehaviour
     [Header("Current Song Checkpoint")]
     public bool start;
     public float startTime;
-    public float TimePerBeat;
+    public float timePerBeat;
 
     [Header("Current Player's Combo & Score")]
     public int combo;
@@ -29,6 +34,7 @@ public class GameManager : MonoBehaviour
     public int hit;
     public int miss;
 
+    //Singleton GameManager
     private void Awake()
     {
         if (instance == null)

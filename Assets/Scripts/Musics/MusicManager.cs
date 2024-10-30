@@ -11,8 +11,8 @@ public class MusicManager : MonoBehaviour
     private bool isPlayed;
 
     private void Start() {
-        GameManager.instance.start = false;
-        songName = database.songData[GameManager.instance.songID].songName;
+        GameManager.Instance.start = false;
+        songName = database.songData[GameManager.Instance.songID].songName;
         source = GetComponent<AudioSource>();
         song = (AudioClip)Resources.Load(Constants.MUSIC_PATH + songName);
         isPlayed = false;
@@ -20,8 +20,8 @@ public class MusicManager : MonoBehaviour
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space) && !isPlayed) {
-            GameManager.instance.start = true;
-            GameManager.instance.startTime = Time.time;
+            GameManager.Instance.start = true;
+            GameManager.Instance.startTime = Time.time;
             isPlayed = true;
             source.PlayOneShot(song);
         }

@@ -9,7 +9,7 @@ public class Notes : MonoBehaviour
 
     private void Start()
     {
-        noteSpeed = GameManager.instance.noteSpeed;
+        noteSpeed = GameManager.Instance.noteSpeed;
     }
 
     private void Update()

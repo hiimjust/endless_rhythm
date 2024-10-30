@@ -14,22 +14,22 @@ public class Result : MonoBehaviour
 
     private void OnEnable()
     {
-        scoreText.text = GameManager.instance.score.ToString();
-        perfectText.text = GameManager.instance.perfect.ToString();
-        goodText.text = GameManager.instance.good.ToString();
-        hitText.text = GameManager.instance.hit.ToString();
-        missText.text = GameManager.instance.miss.ToString();
+        scoreText.text = GameManager.Instance.score.ToString();
+        perfectText.text = GameManager.Instance.perfect.ToString();
+        goodText.text = GameManager.Instance.good.ToString();
+        hitText.text = GameManager.Instance.hit.ToString();
+        missText.text = GameManager.Instance.miss.ToString();
     }
 
     public void Retry()
     {
-        GameManager.instance.perfect = 0;
-        GameManager.instance.good = 0;
-        GameManager.instance.hit = 0;
-        GameManager.instance.miss = 0;
-        GameManager.instance.ratioScore = 0;
-        GameManager.instance.score = 0;
-        GameManager.instance.combo = 0;
+        GameManager.Instance.perfect = 0;
+        GameManager.Instance.good = 0;
+        GameManager.Instance.hit = 0;
+        GameManager.Instance.miss = 0;
+        GameManager.Instance.ratioScore = 0;
+        GameManager.Instance.score = 0;
+        GameManager.Instance.combo = 0;
         SceneManager.LoadScene(Constants.GAME_SCENE);
     }
 }
