@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: bfbea2657fb89db439d92db395ca79a2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - FONTSPRING DEMO - Torus Pro SemiBold
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d72dc61bfda717c44abfa3330c7f17fb, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
