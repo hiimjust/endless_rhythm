@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameUI : MonoBehaviour
 {
@@ -17,17 +17,21 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hit;
     [SerializeField] private TextMeshProUGUI miss;
 
+    [SerializeField] private GameObject finish;
+
 
     private void OnEnable()
     {
-        notesJudgement.UpdateUI.AddListener(UpdateScoreAndCombo);
-        notesJudgement.NoteJudgementNotificationEvent.AddListener(DisplayJudgement);
+        notesJudgement.OnUpdateUI.AddListener(UpdateScoreAndCombo);
+        notesJudgement.OnNoteJudgementNotificationEvent.AddListener(DisplayJudgement);
+        notesJudgement.OnFinishGame.AddListener(Finish);
     }
 
     private void OnDisable()
     {
-        notesJudgement.UpdateUI.RemoveListener(UpdateScoreAndCombo);
-        notesJudgement.NoteJudgementNotificationEvent.RemoveListener(DisplayJudgement);
+        notesJudgement.OnUpdateUI.RemoveListener(UpdateScoreAndCombo);
+        notesJudgement.OnNoteJudgementNotificationEvent.RemoveListener(DisplayJudgement);
+        notesJudgement.OnFinishGame.RemoveListener(Finish);
     }
 
     private void UpdateScoreAndCombo()
@@ -50,5 +54,17 @@ public class GameUI : MonoBehaviour
             else
                 notifications[i].SetActive(false);
         }
+    }
+
+    private void Finish()
+    {
+        finish.SetActive(true);
+        Invoke(Constants.RESULT_SCENE, 5f);
+        return;
+    }
+
+    private void ResultScene()
+    {
+        SceneManager.LoadScene(Constants.RESULT_SCENE);
     }
 }

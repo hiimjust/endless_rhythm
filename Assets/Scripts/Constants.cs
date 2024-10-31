@@ -15,6 +15,7 @@ public class Constants
     public static int NOTE_NOTIFICATION_HIT = 2;
     public static int NOTE_NOTIFICATION_MISS = 3;
 
+    public static int BACKGROUND_VFX_COUNTER = 9;
     #endregion
 
     #region STRINGS
@@ -25,6 +26,7 @@ public class Constants
 
     public static string MUSIC_PATH = "BGMs/";
     public static string BEATMAP_PATH = "Beatmaps/";
+    public static string BACKGROUND_VFX_PATH = "VFX/VFXBackground_";
     #endregion
 
     #region SETTINGS

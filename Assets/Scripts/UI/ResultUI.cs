@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ResultUI : MonoBehaviour
+public class Result : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI perfectText;

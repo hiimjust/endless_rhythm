@@ -11,9 +11,7 @@ public class MusicSelection : MonoBehaviour
 {
     [SerializeField] private SongDatabase database;
     [SerializeField] private Image songImage;
-
     [SerializeField] private Transform content;
-
     [SerializeField] private SongDisplayInfo songDisplayPrefab;
     [SerializeField] private List<SongDisplayInfo> songDisplayInfos;
 
@@ -85,6 +83,7 @@ public class MusicSelection : MonoBehaviour
 
     private void DisplaySelectedSong()
     {
+        songImage.transform.localRotation = Quaternion.identity;
         songImage.sprite = database.songData[select].songImage;
         SelectedSongBackroundColor(Color.green);
     }
