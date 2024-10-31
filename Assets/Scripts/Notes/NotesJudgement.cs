@@ -19,12 +19,10 @@ public class NotesJudgement : MonoBehaviour
 
     private float endTime = 0;
 
-    #region EVENTS
     public UnityEvent<int> OnNoteJudgementNotificationEvent;
     public UnityEvent OnUpdateUI;
     public UnityEvent OnFinishGame;
-    #endregion
-
+    
     private void Start()
     {
         hitSource = GetComponent<AudioSource>();

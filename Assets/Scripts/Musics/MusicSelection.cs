@@ -93,7 +93,7 @@ public class MusicSelection : MonoBehaviour
         songDisplayInfos[select].Background.color = color;
     }
 
-    private void StartSong()
+    public void StartSong()
     {
         GameManager.Instance.songID = select;
         SceneManager.LoadScene(Constants.GAME_SCENE);
