@@ -20,7 +20,6 @@ public class NotesJudgement : MonoBehaviour
     private AudioSource hitSource;
     [SerializeField] private AudioClip hitSound;
 
-    private KeyCode[] keys = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
     private float endTime = 0;
 
     #region EVENTS
@@ -59,9 +58,9 @@ public class NotesJudgement : MonoBehaviour
 
     private void HandleInput()
     {
-        for (int i = 0; i < keys.Length; i++)
+        for (int i = 0; i < Constants.KEYCODE_SETTINGS.Length; i++)
         {
-            if (Input.GetKeyDown(keys[i]))
+            if (Input.GetKeyDown(Constants.KEYCODE_SETTINGS[i]))
             {
                 for (int j = 0; j < notesManager.LaneNum.Count; j++)
                 {

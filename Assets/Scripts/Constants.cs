@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Constants : MonoBehaviour
+public class Constants
 {
     #region CONSTANTS
     public static int MAX_SCORE = 3000;
@@ -24,5 +24,10 @@ public class Constants : MonoBehaviour
     public static string RESULT_SCENE = "ResultScene";
 
     public static string MUSIC_PATH = "BGMs/";
+    public static string BEATMAP_PATH = "Beatmaps/";
+    #endregion
+
+    #region SETTINGS
+    public static KeyCode[] KEYCODE_SETTINGS = { KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K };
     #endregion
 }

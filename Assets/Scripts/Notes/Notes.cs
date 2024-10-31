@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Notes : MonoBehaviour
 {
-    [SerializeField] private float noteSpeed = 8.0f;
-    [SerializeField] private bool start;
+    [SerializeField] private float noteSpeed;
 
     private void Start()
     {
@@ -14,11 +13,7 @@ public class Notes : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            start = true;
-        }
-        if (start)
+        if (GameManager.Instance.start)
         {
             NoteMovement();
         }

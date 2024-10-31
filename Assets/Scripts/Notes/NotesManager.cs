@@ -30,7 +30,7 @@ public class NotesManager : MonoBehaviour
 
     private void LoadSong(string songName)
     {
-        string inputString = Resources.Load<TextAsset>("Beatmaps/" + songName).ToString();
+        string inputString = Resources.Load<TextAsset>(Constants.BEATMAP_PATH + songName).ToString();
         DataInfo inputJSON = JsonUtility.FromJson<DataInfo>(inputString);
         LoadBeatmap(inputJSON);
     }

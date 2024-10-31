@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class GameUI : MonoBehaviour
     [SerializeField] private GameObject[] notifications;
     [SerializeField] private TextMeshProUGUI comboText;
     [SerializeField] private TextMeshProUGUI scoreText;
+
+    [SerializeField] private TextMeshProUGUI perfect;
+    [SerializeField] private TextMeshProUGUI good;
+    [SerializeField] private TextMeshProUGUI hit;
+    [SerializeField] private TextMeshProUGUI miss;
+
 
     private void OnEnable()
     {
@@ -27,6 +34,10 @@ public class GameUI : MonoBehaviour
     {
         comboText.text = GameManager.Instance.combo.ToString();
         scoreText.text = GameManager.Instance.score.ToString();
+        perfect.text = GameManager.Instance.perfect.ToString();
+        good.text = GameManager.Instance.good.ToString();
+        hit.text = GameManager.Instance.hit.ToString();
+        miss.text = GameManager.Instance.miss.ToString();
     }
 
 
