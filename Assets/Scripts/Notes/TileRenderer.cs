@@ -7,10 +7,8 @@ public class TileRenderer : MonoBehaviour
 {
     [SerializeField] private float speed = 3f;
     [SerializeField] private int num = 0;
-
     private Renderer rd;
     private float alpha = 0f;
-
     private void Awake()
     {
         rd = GetComponent<Renderer>();

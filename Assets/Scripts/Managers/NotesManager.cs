@@ -17,12 +17,9 @@ public class NotesManager : MonoBehaviour
     public List<float> NotesTime = new List<float>();
     public List<GameObject> NotesObj = new List<GameObject>();
 
-    public float timePerBeat;
-
     private void OnEnable()
     {
         noteSpeed = GameManager.Instance.noteSpeed;
-        timePerBeat = 0;
         noteNumber = 0;
         songTitle = database.songData[GameManager.Instance.songID].songTitle;
         LoadSong(songTitle);

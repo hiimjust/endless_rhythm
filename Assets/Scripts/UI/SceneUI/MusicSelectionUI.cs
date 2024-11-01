@@ -24,6 +24,9 @@ public class MusicSelectionUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI songBPMText;
     [SerializeField] private TextMeshProUGUI songLevelText;
 
+    [Header("Selected Song Info")]
+    [SerializeField] private TextMeshProUGUI instructionText;
+
     private AudioSource source;
     private AudioClip music;
     private string songTitle;
@@ -37,6 +40,7 @@ public class MusicSelectionUI : MonoBehaviour
         music = (AudioClip)Resources.Load(Paths.MUSIC_PATH + songTitle);
         CreateSongsList();
         UpdateSongsList();
+        StartCoroutine(UpdateInstructionText());
     }
 
     private void Update()
@@ -104,6 +108,18 @@ public class MusicSelectionUI : MonoBehaviour
     private void SelectedSongBackroundColor(Color color)
     {
         songDisplayInfos[select].Background.color = color;
+    }
+
+    private IEnumerator UpdateInstructionText()
+    {
+        while (true)
+        {
+            int index = UnityEngine.Random.Range(0, Tips.TIPS.Length);
+            instructionText.text = Tips.TIPS[index];
+            yield return new WaitForSeconds(10f);
+            instructionText.text = string.Empty;
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     public void StartSong()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Paths
 {
-    public static string MUSIC_PATH = "BGMs/";
-    public static string BEATMAP_PATH = "Beatmaps/";
-    public static string BACKGROUND_VFX_PATH = "VFX/VFXBackground_";
+    public const string MUSIC_PATH = "BGMs/";
+    public const string BEATMAP_PATH = "Beatmaps/";
+    public const string BACKGROUND_VFX_PATH = "VFX/VFXBackground_";
 }
