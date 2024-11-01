@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: WhatDoYouMean
   m_EditorClassIdentifier: 
   songID: 9
-  songName: WhatDoYouMean
-  songLevel: 22
+  songTitle: WhatDoYouMean
+  songName: What Do You Mean
+  artists: Justin Bieber
+  songLevel: MEDIUM
   songImage: {fileID: 21300000, guid: 18090af8cea75a74bb15fa4dfd881f7e, type: 3}

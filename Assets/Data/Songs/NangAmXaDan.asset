@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46c3ddbc1374d349b3f76b7c23dc510, type: 3}
   m_Name: NangAmXaDan
   m_EditorClassIdentifier: 
-  songID: 0
-  songName: NangAmXaDan
-  songLevel: 10
+  songID: 4
+  songTitle: NangAmXaDan
+  songName: "N\u1EAFng \u1EA4m Xa D\u1EA7n"
+  artists: "S\u01A1n T\xF9ng M-TP"
+  BPM: 113
+  songLevel: EASY
   songImage: {fileID: 21300000, guid: 680dfe0402aa8704c97cd800d4c619b6, type: 3}

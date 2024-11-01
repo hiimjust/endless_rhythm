@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46c3ddbc1374d349b3f76b7c23dc510, type: 3}
   m_Name: HikaruNara
   m_EditorClassIdentifier: 
-  songID: 4
-  songName: HikaruNara
-  songLevel: 50
+  songID: 2
+  songTitle: HikaruNara
+  songName: Hikaru Nara
+  artists: Goose House
+  BPM: 160
+  songLevel: HARD
   songImage: {fileID: 21300000, guid: ca3e4c4173a76974d9b616c0181f06b6, type: 3}

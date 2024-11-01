@@ -16,7 +16,7 @@ public class BackgroundVFXManager : MonoBehaviour
 
     private void Start() {
         int index = Random.Range(0, counter);
-        videoPlayer.clip = (VideoClip)Resources.Load(Constants.BACKGROUND_VFX_PATH + index.ToString());
+        videoPlayer.clip = (VideoClip)Resources.Load(Paths.BACKGROUND_VFX_PATH + index.ToString());
         videoPlayer.SetDirectAudioMute(0, true);
         videoPlayer.SetDirectAudioVolume(0, 0);
     }

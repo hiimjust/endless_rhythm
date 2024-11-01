@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46c3ddbc1374d349b3f76b7c23dc510, type: 3}
   m_Name: NuocMatEmLauBangTinhYeuMoi
   m_EditorClassIdentifier: 
-  songID: 6
-  songName: NuocMatEmLauBangTinhYeuMoi
-  songLevel: 14
+  songID: 5
+  songTitle: NuocMatEmLauBangTinhYeuMoi
+  songName: "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi"
+  artists: "Da LAB ft. T\xF3c Ti\xEAn"
+  songLevel: MEDIUM
   songImage: {fileID: 21300000, guid: ac7cd1e80cc87da4c9ae473b0254efbe, type: 3}

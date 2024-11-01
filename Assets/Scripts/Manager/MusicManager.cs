@@ -7,14 +7,14 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private SongDatabase database;
     private AudioSource source;
     private AudioClip song;
-    private string songName;
+    private string songTitle;
     private bool isPlayed;
 
     private void Start() {
         GameManager.Instance.start = false;
-        songName = database.songData[GameManager.Instance.songID].songName;
+        songTitle = database.songData[GameManager.Instance.songID].songTitle;
         source = GetComponent<AudioSource>();
-        song = (AudioClip)Resources.Load(Constants.MUSIC_PATH + songName);
+        song = (AudioClip)Resources.Load(Paths.MUSIC_PATH + songTitle);
         isPlayed = false;
     }
 

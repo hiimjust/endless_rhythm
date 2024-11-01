@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI good;
     [SerializeField] private TextMeshProUGUI hit;
     [SerializeField] private TextMeshProUGUI miss;
+
+    [SerializeField] private Image songImage;
 
     [SerializeField] private GameObject finish;
 
@@ -32,6 +35,15 @@ public class GameUI : MonoBehaviour
         notesJudgement.OnUpdateUI.RemoveListener(UpdateScoreAndCombo);
         notesJudgement.OnNoteJudgementNotificationEvent.RemoveListener(DisplayJudgement);
         notesJudgement.OnFinishGame.RemoveListener(Finish);
+    }
+
+    private void Start() {
+        songImage.sprite = GameManager.Instance.songSprite;
+    }
+
+    private void UpdateSongImage(Image img)
+    {
+        songImage.sprite = img.sprite;
     }
 
     private void UpdateScoreAndCombo()
@@ -59,12 +71,12 @@ public class GameUI : MonoBehaviour
     private void Finish()
     {
         finish.SetActive(true);
-        Invoke(Constants.RESULT_SCENE, 5f);
+        Invoke(Scenes.RESULT_SCENE, 5f);
         return;
     }
 
     private void ResultScene()
     {
-        SceneManager.LoadScene(Constants.RESULT_SCENE);
+        SceneManager.LoadScene(Scenes.RESULT_SCENE);
     }
 }

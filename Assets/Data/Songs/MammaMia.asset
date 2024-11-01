@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: MammaMia
   m_EditorClassIdentifier: 
   songID: 3
-  songName: MammaMia
-  songLevel: 30
+  songTitle: MammaMia
+  songName: Mamma Mia
+  artists: ABBA
+  BPM: 138
+  songLevel: HARD
   songImage: {fileID: 21300000, guid: 35a58c9d63fb1534fb485ed1d743080d, type: 3}

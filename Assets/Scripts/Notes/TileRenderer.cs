@@ -23,7 +23,7 @@ public class TileRenderer : MonoBehaviour
             rd.material.color = new Color(rd.material.color.r, rd.material.color.g, rd.material.color.b, alpha < 0f ? 0f : alpha);
         }
 
-        if (Input.GetKeyDown(Constants.KEYCODE_SETTINGS[num - 1]))
+        if (Input.GetKeyDown(Configurations.KEYCODE_SETTINGS[num - 1]))
         {
             ColorChange();
         }

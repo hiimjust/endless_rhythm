@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Current Song Info")]
     public int songID;
+    public Sprite songSprite;
     public float noteSpeed = Constants.NOTE_SPEED;
 
     [Header("Current Song Checkpoint")]

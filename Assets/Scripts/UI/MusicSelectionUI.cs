@@ -7,25 +7,34 @@ using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-public class MusicSelection : MonoBehaviour
+public class MusicSelectionUI : MonoBehaviour
 {
+    [Header("Database")]
     [SerializeField] private SongDatabase database;
-    [SerializeField] private Image songImage;
+
+    [Header("Songs List")]
     [SerializeField] private Transform content;
     [SerializeField] private SongDisplayInfo songDisplayPrefab;
     [SerializeField] private List<SongDisplayInfo> songDisplayInfos;
 
+    [Header("Selected Song Info")]
+    [SerializeField] private Image songImage;
+    [SerializeField] private TextMeshProUGUI songNameText;
+    [SerializeField] private TextMeshProUGUI songArtistsText;
+    [SerializeField] private TextMeshProUGUI songBPMText;
+    [SerializeField] private TextMeshProUGUI songLevelText;
+
     private AudioSource source;
     private AudioClip music;
-    private string songName;
+    private string songTitle;
     private int select;
 
     private void Start()
     {
         select = 0;
         source = GetComponent<AudioSource>();
-        songName = database.songData[select].songName;
-        music = (AudioClip)Resources.Load(Constants.MUSIC_PATH + songName);
+        songTitle = database.songData[select].songTitle;
+        music = (AudioClip)Resources.Load(Paths.MUSIC_PATH + songTitle);
         CreateSongsList();
         UpdateSongsList();
     }
@@ -44,7 +53,7 @@ public class MusicSelection : MonoBehaviour
             select--;
             UpdateSongsList();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             StartSong();
         }
@@ -59,7 +68,7 @@ public class MusicSelection : MonoBehaviour
         content.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 100 * database.songData.Length);
         for (int i = 0; i < database.songData.Length; i++)
         {
-            CreateSong(database.songData[i].songName, database.songData[i].songLevel.ToString());
+            CreateSong(database.songData[i].songName, database.songData[i].songLevel);
         }
     }
 
@@ -74,8 +83,8 @@ public class MusicSelection : MonoBehaviour
 
     private void UpdateSongsList()
     {
-        songName = database.songData[select].songName;
-        music = (AudioClip)Resources.Load(Constants.MUSIC_PATH + songName);
+        songTitle = database.songData[select].songTitle;
+        music = (AudioClip)Resources.Load(Paths.MUSIC_PATH + songTitle);
         source.Stop();
         source.PlayOneShot(music);
         DisplaySelectedSong();
@@ -85,6 +94,10 @@ public class MusicSelection : MonoBehaviour
     {
         songImage.transform.localRotation = Quaternion.identity;
         songImage.sprite = database.songData[select].songImage;
+        songNameText.text = database.songData[select].songName;
+        songArtistsText.text = database.songData[select].artists;
+        songBPMText.text = "BPM: " + database.songData[select].BPM;
+        songLevelText.text = "Level: " + database.songData[select].songLevel;
         SelectedSongBackroundColor(Color.green);
     }
 
@@ -96,11 +109,12 @@ public class MusicSelection : MonoBehaviour
     public void StartSong()
     {
         GameManager.Instance.songID = select;
-        SceneManager.LoadScene(Constants.GAME_SCENE);
+        GameManager.Instance.songSprite = database.songData[select].songImage;
+        SceneManager.LoadScene(Scenes.GAME_SCENE);
     }
 
-    private void Back()
+    public void Back()
     {
-        SceneManager.LoadScene(Constants.START_GAME_SCENE);
+        SceneManager.LoadScene(Scenes.START_GAME_SCENE);
     }
 }

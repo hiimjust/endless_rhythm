@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: TuNgayEmDen
   m_EditorClassIdentifier: 
   songID: 8
-  songName: TuNgayEmDen
-  songLevel: 18
+  songTitle: TuNgayEmDen
+  songName: "T\u1EEB Ng\xE0y Em \u0110\u1EBFn"
+  artists: Da LAB
+  songLevel: EASY
   songImage: {fileID: 21300000, guid: 14676db51a0a92a418628d13d744a947, type: 3}

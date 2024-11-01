@@ -22,7 +22,7 @@ public class NotesJudgement : MonoBehaviour
     public UnityEvent<int> OnNoteJudgementNotificationEvent;
     public UnityEvent OnUpdateUI;
     public UnityEvent OnFinishGame;
-    
+
     private void Start()
     {
         hitSource = GetComponent<AudioSource>();
@@ -33,19 +33,17 @@ public class NotesJudgement : MonoBehaviour
     {
         if (notesManager.NotesTime.Count == 0)
         {
+            if (Time.time > endTime + GameManager.Instance.startTime)
+            {
+                FinishGame();
+            }
             return;
         }
 
         if (GameManager.Instance.start)
         {
             HandleInput();
-
-            if (Time.time > endTime + GameManager.Instance.startTime)
-            {
-                FinishGame();
-            }
-
-            if (notesManager.NotesTime.Count != 0)
+            if (notesManager.NotesTime.Count != 0 && Time.time > notesManager.NotesTime[0] + GameManager.Instance.startTime + (GameManager.Instance.timePerBeat / 2))
             {
                 NoteMiss();
             }
@@ -54,9 +52,9 @@ public class NotesJudgement : MonoBehaviour
 
     private void HandleInput()
     {
-        for (int i = 0; i < Constants.KEYCODE_SETTINGS.Length; i++)
+        for (int i = 0; i < Configurations.KEYCODE_SETTINGS.Length; i++)
         {
-            if (Input.GetKeyDown(Constants.KEYCODE_SETTINGS[i]))
+            if (Input.GetKeyDown(Configurations.KEYCODE_SETTINGS[i]))
             {
                 for (int j = 0; j < notesManager.LaneNum.Count; j++)
                 {
@@ -72,13 +70,10 @@ public class NotesJudgement : MonoBehaviour
 
     private void NoteMiss()
     {
-        if (Time.time > notesManager.NotesTime[0] + GameManager.Instance.startTime + (GameManager.Instance.timePerBeat / 2))
-        {
-            OnNoteJudgementNotificationEvent?.Invoke(Constants.NOTE_NOTIFICATION_MISS);
-            GameManager.Instance.miss++;
-            GameManager.Instance.combo = 0;
-            ProcessNote(0);
-        }
+        OnNoteJudgementNotificationEvent?.Invoke(Constants.NOTE_NOTIFICATION_MISS);
+        GameManager.Instance.miss++;
+        GameManager.Instance.combo = 0;
+        ProcessNote(0);
     }
 
     void NoteJudgement(float timeLag, int numOffset)
@@ -87,25 +82,22 @@ public class NotesJudgement : MonoBehaviour
         if (timeLag <= GameManager.Instance.timePerBeat / 8)
         {
             OnNoteJudgementNotificationEvent?.Invoke(Constants.NOTE_NOTIFICATION_PERFECT);
-            GameManager.Instance.ratioScore += 5;
+            ProcessCombo(5);
             GameManager.Instance.perfect++;
-            GameManager.Instance.combo++;
             ProcessNote(numOffset);
         }
         else if (timeLag <= GameManager.Instance.timePerBeat / 4)
         {
             OnNoteJudgementNotificationEvent?.Invoke(Constants.NOTE_NOTIFICATION_GOOD);
-            GameManager.Instance.ratioScore += 3;
+            ProcessCombo(3);
             GameManager.Instance.good++;
-            GameManager.Instance.combo++;
             ProcessNote(numOffset);
         }
         else if (timeLag <= GameManager.Instance.timePerBeat / 2)
         {
             OnNoteJudgementNotificationEvent?.Invoke(Constants.NOTE_NOTIFICATION_HIT);
-            GameManager.Instance.ratioScore += 1;
+            ProcessCombo(1);
             GameManager.Instance.hit++;
-            GameManager.Instance.combo++;
             ProcessNote(numOffset);
         }
     }
@@ -114,6 +106,12 @@ public class NotesJudgement : MonoBehaviour
     {
         DeleteNoteData(numOffset);
         CalculateScore();
+    }
+
+    private void ProcessCombo(int ratio)
+    {
+        GameManager.Instance.ratioScore += ratio;
+        GameManager.Instance.combo++;
     }
 
     private void DeleteNoteData(int numOffset)
