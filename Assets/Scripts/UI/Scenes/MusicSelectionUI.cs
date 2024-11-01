@@ -14,8 +14,8 @@ public class MusicSelectionUI : MonoBehaviour
 
     [Header("Songs List")]
     [SerializeField] private Transform content;
-    [SerializeField] private SongDisplayInfo songDisplayPrefab;
-    [SerializeField] private List<SongDisplayInfo> songDisplayInfos;
+    [SerializeField] private SongInfo songDisplayPrefab;
+    [SerializeField] private List<SongInfo> songDisplayInfos;
 
     [Header("Selected Song Info")]
     [SerializeField] private Image songImage;
@@ -78,7 +78,7 @@ public class MusicSelectionUI : MonoBehaviour
 
     private void CreateSong(string songName, string songLevel)
     {
-        SongDisplayInfo songInfo = Instantiate(songDisplayPrefab, content);
+        SongInfo songInfo = Instantiate(songDisplayPrefab, content);
         songInfo.SongName.text = songName;
         songInfo.SongLevel.text = songLevel;
         songInfo.Background.color = Color.gray;

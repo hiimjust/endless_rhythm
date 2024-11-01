@@ -12,7 +12,7 @@ public class NotesManager : MonoBehaviour
     [SerializeField] private GameObject noteObj;
     [SerializeField] private SongDatabase database;
 
-    public List<int> LaneNum = new List<int>();
+    public List<int> Tiles = new List<int>();
     public List<int> NoteType = new List<int>();
     public List<float> NotesTime = new List<float>();
     public List<GameObject> NotesObj = new List<GameObject>();
@@ -43,7 +43,7 @@ public class NotesManager : MonoBehaviour
             GameManager.Instance.timePerBeat = beat;
             float time = (beat * inputJSON.notes[i].num / (float)inputJSON.notes[i].LPB) + inputJSON.offset * 0.01f;
             NotesTime.Add(time);
-            LaneNum.Add(inputJSON.notes[i].block);
+            Tiles.Add(inputJSON.notes[i].block);
             NoteType.Add(inputJSON.notes[i].type);
             float z = NotesTime[i] * noteSpeed + Constants.NOTE_JUDGEMENT_Z_POS;
             NotesObj.Add(Instantiate(noteObj, new Vector3(inputJSON.notes[i].block - 1.5f, 0.5f, z), Quaternion.identity));

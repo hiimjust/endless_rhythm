@@ -380,11 +380,10 @@ MonoBehaviour:
   noteSpeed: 0
   noteObj: {fileID: 8138395605340686618, guid: 5644e60ecc6b37e49b8ce63deafcf120, type: 3}
   database: {fileID: 11400000, guid: 599f0c3752a4ced429304b187084e3be, type: 2}
-  LaneNum: 
+  Tiles: 
   NoteType: 
   NotesTime: []
   NotesObj: []
-  timePerBeat: 0
 --- !u!4 &181087384
 Transform:
   m_ObjectHideFlags: 0
@@ -5040,6 +5039,10 @@ PrefabInstance:
     - target: {fileID: 3635814747515147781, guid: 32b9f4282aa373847976992d5684a49c, type: 3}
       propertyPath: m_Name
       value: Good
+      objectReference: {fileID: 0}
+    - target: {fileID: 3635814747515147781, guid: 32b9f4282aa373847976992d5684a49c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3635814747515147782, guid: 32b9f4282aa373847976992d5684a49c, type: 3}
       propertyPath: m_Pivot.x

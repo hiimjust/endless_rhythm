@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class SongDisplayInfo : MonoBehaviour
+public class SongInfo : MonoBehaviour
 {
     [SerializeField] public Image Background;
     [SerializeField] public TextMeshProUGUI SongName;

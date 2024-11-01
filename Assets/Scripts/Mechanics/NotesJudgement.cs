@@ -56,9 +56,9 @@ public class NotesJudgement : MonoBehaviour
         {
             if (Input.GetKeyDown(Configurations.KEYCODE_SETTINGS[i]))
             {
-                for (int j = 0; j < notesManager.LaneNum.Count; j++)
+                for (int j = 0; j < notesManager.Tiles.Count; j++)
                 {
-                    if (notesManager.LaneNum[j] == i)
+                    if (notesManager.Tiles[j] == i)
                     {
                         NoteJudgement(Mathf.Abs(Time.time - (notesManager.NotesTime[j] + GameManager.Instance.startTime)), j);
                         break;
@@ -117,7 +117,7 @@ public class NotesJudgement : MonoBehaviour
     private void DeleteNoteData(int numOffset)
     {
         notesManager.NotesTime.RemoveAt(numOffset);
-        notesManager.LaneNum.RemoveAt(numOffset);
+        notesManager.Tiles.RemoveAt(numOffset);
         notesManager.NoteType.RemoveAt(numOffset);
     }
 
