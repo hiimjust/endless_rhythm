@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance = null;
-    public static GameManager Instance {
-        get {
+    public static GameManager Instance
+    {
+        get
+        {
             return instance;
         }
     }
@@ -36,6 +38,9 @@ public class GameManager : MonoBehaviour
     public int hit;
     public int miss;
 
+    [Header("Scenes")]
+    public string nextScene;
+
     //Singleton GameManager
     private void Awake()
     {
@@ -48,5 +53,28 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Reset()
+    {
+        //Game started?
+        start = false;
+        startTime = 0;
+        //Scores & combos
+        maxScore = Constants.MAX_SCORE;
+        ratioScore = 0;
+        combo = 0;
+        score = 0;
+        perfect = 0;
+        good = 0;
+        hit = 0;
+        miss = 0;
+        //Song info
+        songID = 0;
+        songSprite = null;
+        noteSpeed = Constants.NOTE_SPEED;
+        timePerBeat = 0;
+        //Next scene
+        nextScene = string.Empty;
     }
 }

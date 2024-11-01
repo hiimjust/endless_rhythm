@@ -31,19 +31,22 @@ public class ResultUI : MonoBehaviour
     public void Retry()
     {
         ResetData();
-        SceneManager.LoadScene(Scenes.GAME_SCENE);
+        GameManager.Instance.nextScene = Scenes.GAME_SCENE;
+        SceneManager.LoadScene(Scenes.LOADING_SCENE);
     }
 
     public void StartMenu()
     {
         ResetData();
-        SceneManager.LoadScene(Scenes.START_GAME_SCENE);
+        GameManager.Instance.nextScene = Scenes.START_GAME_SCENE;
+        SceneManager.LoadScene(Scenes.LOADING_SCENE);
     }
 
     public void MusicSelectionsMenu()
     {
         ResetData();
-        SceneManager.LoadScene(Scenes.MUSIC_SELECT_SCENE);
+        GameManager.Instance.nextScene = Scenes.MUSIC_SELECT_SCENE;
+        SceneManager.LoadScene(Scenes.LOADING_SCENE);
     }
 
     private void ResetData()

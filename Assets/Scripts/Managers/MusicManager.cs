@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MusicManager : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class MusicManager : MonoBehaviour
     private string songTitle;
     private bool isPlayed;
 
+    public UnityEvent SongStartEvent;
+
     private void Start() {
         GameManager.Instance.start = false;
         songTitle = database.songData[GameManager.Instance.songID].songTitle;
         source = GetComponent<AudioSource>();
-        song = (AudioClip)Resources.Load(Paths.MUSIC_PATH + songTitle);
+        song = (AudioClip)Resources.Load($"{Paths.MUSIC_PATH}{songTitle}");
         isPlayed = false;
     }
 
@@ -24,6 +27,7 @@ public class MusicManager : MonoBehaviour
             GameManager.Instance.startTime = Time.time;
             isPlayed = true;
             source.PlayOneShot(song);
+            SongStartEvent?.Invoke();
         }
     }
 }

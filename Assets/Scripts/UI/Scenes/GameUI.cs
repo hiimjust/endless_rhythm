@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private NotesJudgement notesJudgement;
+    [SerializeField] private MusicManager musicManager;
     [SerializeField] private GameObject[] notifications;
     [SerializeField] private TextMeshProUGUI comboText;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -20,6 +21,7 @@ public class GameUI : MonoBehaviour
 
     [SerializeField] private Image songImage;
 
+    [SerializeField] private GameObject start;
     [SerializeField] private GameObject finish;
 
 
@@ -27,17 +29,21 @@ public class GameUI : MonoBehaviour
     {
         notesJudgement.OnUpdateUI.AddListener(UpdateScoreAndCombo);
         notesJudgement.OnNoteJudgementNotificationEvent.AddListener(DisplayJudgement);
-        notesJudgement.OnFinishGame.AddListener(Finish);
+        notesJudgement.OnFinishGame.AddListener(FinishGame);
+        musicManager.SongStartEvent.AddListener(StartGame);
     }
 
     private void OnDisable()
     {
         notesJudgement.OnUpdateUI.RemoveListener(UpdateScoreAndCombo);
         notesJudgement.OnNoteJudgementNotificationEvent.RemoveListener(DisplayJudgement);
-        notesJudgement.OnFinishGame.RemoveListener(Finish);
+        notesJudgement.OnFinishGame.RemoveListener(FinishGame);
+        musicManager.SongStartEvent.RemoveListener(StartGame);
     }
 
-    private void Start() {
+    private void Start()
+    {
+        start.SetActive(true);
         songImage.sprite = GameManager.Instance.songSprite;
     }
 
@@ -68,7 +74,12 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    private void Finish()
+    private void StartGame()
+    {
+        start.SetActive(false);
+    }
+
+    private void FinishGame()
     {
         finish.SetActive(true);
         Invoke(Scenes.RESULT_SCENE, 5f);

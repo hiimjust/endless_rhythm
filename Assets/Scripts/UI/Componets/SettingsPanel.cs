@@ -42,7 +42,7 @@ public class SettingsPanel : MonoBehaviour
         List<String> options = new List<string>();
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
+            string option = $"{resolutions[i].width} x {resolutions[i].height}";
             options.Add(option);
             if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
             {

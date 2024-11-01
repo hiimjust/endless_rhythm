@@ -15,7 +15,8 @@ public class MenuUI : MonoBehaviour
 
     public void LoadMusicSelectScene()
     {
-        SceneManager.LoadScene(Scenes.MUSIC_SELECT_SCENE);
+        GameManager.Instance.nextScene = Scenes.MUSIC_SELECT_SCENE;
+        SceneManager.LoadScene(Scenes.LOADING_SCENE);
     }
 
     public void OpenSettingsPanel()
