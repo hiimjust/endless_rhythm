@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class LoadingUI : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad = null;
+    [SerializeField] private Image background;
+    [SerializeField] private Sprite[] splashs;
     [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private TextMeshProUGUI instructionText;
     [SerializeField] private Slider slider;
@@ -15,6 +17,8 @@ public class LoadingUI : MonoBehaviour
     private void Start()
     {
         sceneToLoad = GameManager.Instance.nextScene;
+        int index = Random.Range(0, Constants.SPLASH_COUNTER);
+        background.sprite = splashs[index];
         StartCoroutine(LoadSceneAsync());
     }
 

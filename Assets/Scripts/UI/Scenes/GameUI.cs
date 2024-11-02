@@ -47,11 +47,6 @@ public class GameUI : MonoBehaviour
         songImage.sprite = GameManager.Instance.songSprite;
     }
 
-    private void UpdateSongImage(Image img)
-    {
-        songImage.sprite = img.sprite;
-    }
-
     private void UpdateScoreAndCombo()
     {
         comboText.text = GameManager.Instance.combo.ToString();

@@ -523,7 +523,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4c7dce58c611fff46a461596ed1aaf5f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1242,6 +1242,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: 
+  background: {fileID: 343040411}
+  splashs:
+  - {fileID: 21300000, guid: bfa11bf9924c36248b39b9c570b85026, type: 3}
+  - {fileID: 21300000, guid: 4c7dce58c611fff46a461596ed1aaf5f, type: 3}
+  - {fileID: 21300000, guid: f2dabc37183f3da4785c5155c27de857, type: 3}
+  - {fileID: 21300000, guid: 47ad4d474a9a5df439725ba759c7b41d, type: 3}
+  - {fileID: 21300000, guid: 2bab7eb9c0e02ac43bce2ccc7ccd62bd, type: 3}
   loadingText: {fileID: 1351536791}
   instructionText: {fileID: 176202861}
   slider: {fileID: 372235280}

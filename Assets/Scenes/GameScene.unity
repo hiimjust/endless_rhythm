@@ -6257,7 +6257,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1730091428}
         m_TargetAssemblyTypeName: PausePanel, Assembly-CSharp
-        m_MethodName: ResumeGame
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
