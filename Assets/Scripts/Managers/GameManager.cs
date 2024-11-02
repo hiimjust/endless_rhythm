@@ -24,9 +24,12 @@ public class GameManager : MonoBehaviour
     public float noteSpeed = Constants.NOTE_SPEED;
 
     [Header("Current Song Checkpoint")]
-    public bool start;
+    public bool play = false;
     public float startTime;
     public float timePerBeat;
+
+    [Header("Ingame state")]
+    public bool pause = false;
 
     [Header("Current Player's Combo & Score")]
     public int combo;
@@ -58,7 +61,8 @@ public class GameManager : MonoBehaviour
     private void Reset()
     {
         //Game started?
-        start = false;
+        play = false;
+        pause = false;
         startTime = 0;
         //Scores & combos
         maxScore = Constants.MAX_SCORE;
@@ -76,5 +80,10 @@ public class GameManager : MonoBehaviour
         timePerBeat = 0;
         //Next scene
         nextScene = string.Empty;
+    }
+
+    public void ResetData()
+    {
+        Reset();
     }
 }

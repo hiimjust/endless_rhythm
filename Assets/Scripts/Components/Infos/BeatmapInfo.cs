@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class DataInfo
+public class BeatmapInfo
 {
     public string name;
     public int maxBlock;

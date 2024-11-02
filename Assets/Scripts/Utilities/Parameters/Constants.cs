@@ -11,5 +11,8 @@ public class Constants
     public const int NOTE_NOTIFICATION_GOOD = 1;
     public const int NOTE_NOTIFICATION_HIT = 2;
     public const int NOTE_NOTIFICATION_MISS = 3;
+    public const int PERFECT_SCORE = 5;
+    public const int GOOD_SCORE = 3;
+    public const int HIT_SCORE = 1;
     public const int BACKGROUND_VFX_COUNTER = 10;
 }

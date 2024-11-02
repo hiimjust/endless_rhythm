@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class NotesJudgement : MonoBehaviour
 {
     [Header("Notes")]
-    [SerializeField] private NotesManager notesManager;
+    [SerializeField] private NotesCreator notesManager;
 
     [SerializeField] private GameObject finish;
 
@@ -31,7 +31,7 @@ public class NotesJudgement : MonoBehaviour
 
     private void Update()
     {
-        if (notesManager.NotesTime.Count == 0)
+         if (notesManager.NotesTime.Count == 0)
         {
             if (Time.time > endTime + GameManager.Instance.startTime)
             {
@@ -39,8 +39,7 @@ public class NotesJudgement : MonoBehaviour
             }
             return;
         }
-
-        if (GameManager.Instance.start)
+        if (GameManager.Instance.play)
         {
             HandleInput();
             if (notesManager.NotesTime.Count != 0 && Time.time > notesManager.NotesTime[0] + GameManager.Instance.startTime + (GameManager.Instance.timePerBeat / 2))
@@ -123,7 +122,7 @@ public class NotesJudgement : MonoBehaviour
 
     private void CalculateScore()
     {
-        GameManager.Instance.score = (int)Math.Round(1000000 * Math.Floor(GameManager.Instance.ratioScore / GameManager.Instance.maxScore * 1000000) / 1000000);
+        GameManager.Instance.score = (int)(1000000 * GameManager.Instance.ratioScore / GameManager.Instance.maxScore);
         OnUpdateUI?.Invoke();
     }
 

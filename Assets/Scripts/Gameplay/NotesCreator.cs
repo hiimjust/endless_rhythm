@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public class NotesManager : MonoBehaviour
+public class NotesCreator : MonoBehaviour
 {
     private int noteNumber;
     private string songTitle;
@@ -28,11 +29,11 @@ public class NotesManager : MonoBehaviour
     private void LoadSong(string songName)
     {
         string inputString = Resources.Load<TextAsset>($"{Paths.BEATMAP_PATH}{songName}").ToString();
-        DataInfo inputJSON = JsonUtility.FromJson<DataInfo>(inputString);
+        BeatmapInfo inputJSON = JsonUtility.FromJson<BeatmapInfo>(inputString);
         LoadBeatmap(inputJSON);
     }
 
-    private void LoadBeatmap(DataInfo inputJSON)
+    private void LoadBeatmap(BeatmapInfo inputJSON)
     {
         noteNumber = inputJSON.notes.Length;
 

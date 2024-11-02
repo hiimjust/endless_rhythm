@@ -13,7 +13,7 @@ public class Notes : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.start)
+        if (GameManager.Instance.play)
         {
             NoteMovement();
         }

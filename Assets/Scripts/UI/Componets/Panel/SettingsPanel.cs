@@ -17,6 +17,16 @@ public class SettingsPanel : MonoBehaviour
         SetUpResolutionSelections();
     }
 
+    public void Show()
+    {
+        gameObject.SetActive(true);
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void SetResolution(int index)
     {
         Resolution resolution = resolutions[index];

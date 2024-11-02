@@ -14,7 +14,7 @@ public class MusicManager : MonoBehaviour
     public UnityEvent SongStartEvent;
 
     private void Start() {
-        GameManager.Instance.start = false;
+        GameManager.Instance.play = false;
         songTitle = database.songData[GameManager.Instance.songID].songTitle;
         source = GetComponent<AudioSource>();
         song = (AudioClip)Resources.Load($"{Paths.MUSIC_PATH}{songTitle}");
@@ -23,11 +23,13 @@ public class MusicManager : MonoBehaviour
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space) && !isPlayed) {
-            GameManager.Instance.start = true;
+            GameManager.Instance.play = true;
             GameManager.Instance.startTime = Time.time;
             isPlayed = true;
             source.PlayOneShot(song);
             SongStartEvent?.Invoke();
         }
     }
+
+
 }
