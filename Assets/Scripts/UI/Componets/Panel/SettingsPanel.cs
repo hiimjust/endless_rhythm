@@ -46,7 +46,6 @@ public class SettingsPanel : MonoBehaviour
     private void SetUpResolutionSelections()
     {
         resolutions = Screen.resolutions;
-        Debug.Log(resolutions);
         resolutionDropdown.ClearOptions();
         int resolutionIndex = 0;
         List<String> options = new List<string>();

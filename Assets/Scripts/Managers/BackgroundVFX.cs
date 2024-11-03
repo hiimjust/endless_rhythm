@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Video;
 
 [RequireComponent(typeof(VideoPlayer))]
-public class BackgroundVFXManager : MonoBehaviour
+public class BackgroundVFX : MonoBehaviour
 {
     [SerializeField] private VideoPlayer videoPlayer;
 

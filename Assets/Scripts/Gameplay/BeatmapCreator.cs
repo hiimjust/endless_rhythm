@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class NotesCreator : MonoBehaviour
+public class BeatmapCreator : MonoBehaviour
 {
     private int noteNumber;
     private string songTitle;
@@ -36,7 +36,6 @@ public class NotesCreator : MonoBehaviour
     private void LoadBeatmap(BeatmapInfo inputJSON)
     {
         noteNumber = inputJSON.notes.Length;
-
         for (int i = 0; i < inputJSON.notes.Length; i++)
         {
             float line = 60 / (inputJSON.BPM * (float)inputJSON.notes[i].LPB);

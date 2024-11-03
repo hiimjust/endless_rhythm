@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class NotesJudgement : MonoBehaviour
 {
     [Header("Notes")]
-    [SerializeField] private NotesCreator notesManager;
+    [SerializeField] private BeatmapCreator notesManager;
 
     [SerializeField] private GameObject finish;
 
