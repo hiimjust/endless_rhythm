@@ -15,6 +15,7 @@ MonoBehaviour:
   songID: 6
   songTitle: Rise
   songName: Rise
-  artists: League Of Legends
+  artists: The Glitch Mob ft Mako & The Word Alive
+  BPM: 177
   songLevel: MEDIUM
   songImage: {fileID: 21300000, guid: 9e0647438d0985840afd45f3d0169144, type: 3}

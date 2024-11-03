@@ -16,5 +16,6 @@ MonoBehaviour:
   songTitle: WhatDoYouMean
   songName: What Do You Mean
   artists: Justin Bieber
-  songLevel: MEDIUM
+  BPM: 125
+  songLevel: INSANE
   songImage: {fileID: 21300000, guid: 18090af8cea75a74bb15fa4dfd881f7e, type: 3}

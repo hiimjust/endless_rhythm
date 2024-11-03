@@ -16,5 +16,6 @@ MonoBehaviour:
   songTitle: NuocMatEmLauBangTinhYeuMoi
   songName: "N\u01B0\u1EDBc M\u1EAFt Em Lau B\u1EB1ng T\xECnh Y\xEAu M\u1EDBi"
   artists: "Da LAB ft. T\xF3c Ti\xEAn"
+  BPM: 85
   songLevel: MEDIUM
   songImage: {fileID: 21300000, guid: ac7cd1e80cc87da4c9ae473b0254efbe, type: 3}

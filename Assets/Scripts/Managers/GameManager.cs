@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public int miss;
 
     [Header("Scenes")]
-    public string nextScene;
+    public string nextScene = Scenes.START_GAME_SCENE;
 
     //Singleton GameManager
     private void Awake()
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         noteSpeed = Constants.NOTE_SPEED;
         timePerBeat = 0;
         //Next scene
-        nextScene = string.Empty;
+        nextScene = Scenes.START_GAME_SCENE;
     }
 
     public void ResetData()

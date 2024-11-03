@@ -40,7 +40,7 @@ public class SettingsPanel : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        mixer.SetFloat("masterVolume", volume); ;
+        mixer.SetFloat("masterVolume", volume);
     }
 
     private void SetUpResolutionSelections()

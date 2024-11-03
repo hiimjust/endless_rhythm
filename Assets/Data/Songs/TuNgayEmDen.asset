@@ -16,5 +16,6 @@ MonoBehaviour:
   songTitle: TuNgayEmDen
   songName: "T\u1EEB Ng\xE0y Em \u0110\u1EBFn"
   artists: Da LAB
+  BPM: 70
   songLevel: EASY
   songImage: {fileID: 21300000, guid: 14676db51a0a92a418628d13d744a947, type: 3}

@@ -6,7 +6,7 @@ public class Notification : MonoBehaviour
 {
     private void OnEnable()
     {
-        Invoke("Deactivate", 1f);
+        Invoke("Deactivate", 0.5f);
     }
 
     private void Deactivate()
