@@ -7,10 +7,12 @@ public class MenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject buttonsList;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject instructionsPanel;
 
     private void Start() {
         buttonsList.SetActive(true);
         settingsPanel.SetActive(false);
+        instructionsPanel.SetActive(false);
     }
 
     public void LoadMusicSelectScene()
@@ -31,6 +33,17 @@ public class MenuUI : MonoBehaviour
         settingsPanel.SetActive(false);
     }
 
+    public void OpenInstructionsPanel()
+    {
+        buttonsList.SetActive(false);
+        instructionsPanel.SetActive(true);
+    }
+
+    public void CloseInstructionsPanel()
+    {
+        buttonsList.SetActive(true);
+        instructionsPanel.SetActive(false);
+    }
 
     public void Quit()
     {
