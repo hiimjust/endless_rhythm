@@ -6,5 +6,5 @@ public class Paths
 {
     public const string MUSIC_PATH = "Songs/";
     public const string BEATMAP_PATH = "Beatmaps/";
-    public const string BACKGROUND_VFX_PATH = "VFX/VFXBackground_";
+    public const string BACKGROUND_VFX_PATH = "VFXBackground_";
 }

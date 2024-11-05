@@ -41,7 +41,7 @@ public class PausePanel : MonoBehaviour
     {
         Time.timeScale = 1f;
         GameManager.Instance.ResetData();
-        GameManager.Instance.nextScene = Scenes.MUSIC_SELECT_SCENE;
+        GameManager.Instance.nextScene = Scenes.START_GAME_SCENE;
         SceneManager.LoadScene(Scenes.LOADING_SCENE); 
     }
 

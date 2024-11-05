@@ -1320,7 +1320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: 284774556be21e5438e3d7575f572c05, type: 2}
+  m_Texture: {fileID: 8400000, guid: 9420e7337104d3d4992de20b06041722, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3851,5 +3851,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoPlayerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7680166972897272433, guid: 94869c40dd8f2a245a2dc6dce8881256, type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: 9420e7337104d3d4992de20b06041722, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94869c40dd8f2a245a2dc6dce8881256, type: 3}
