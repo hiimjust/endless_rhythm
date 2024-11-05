@@ -40,7 +40,7 @@ Nhiều bài hát và các chế độ chơi khác sẽ dần dần được c�
 
 ---
 
-1. 4K VSRG mode_Gameplay Demo_Endless Rhythm 0.1 (Upload soon)
+1. [4K VSRG mode_Gameplay Demo_Endless Rhythm 0.1](https://drive.google.com/file/d/1lKBSsI72SAaMq4mEto8TuliefvePdu5h/view?usp=sharing)
 
 ### PHỤ LỤC
 
